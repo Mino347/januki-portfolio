@@ -113,9 +113,9 @@ if (!reduceMotion && "IntersectionObserver" in window) {
 
 /* Desktop cursor preview on the project list. */
 const preview = document.querySelector(".cursor-preview");
-const previewImg = preview?.querySelector("img");
 const work = document.querySelector("#work");
-if (preview && previewImg && work && finePointer && !reduceMotion) {
+if (preview && work && finePointer && !reduceMotion) {
+  let previewImg = null;
   let frame = 0;
   let px = 0;
   let py = 0;
@@ -136,6 +136,12 @@ if (preview && previewImg && work && finePointer && !reduceMotion) {
     card.addEventListener("pointerenter", () => {
       const src = card.dataset.preview;
       if (!src) return;
+      if (!previewImg) {
+        previewImg = document.createElement("img");
+        previewImg.alt = "";
+        previewImg.decoding = "async";
+        preview.append(previewImg);
+      }
       previewImg.src = src;
       preview.classList.add("is-on");
     });

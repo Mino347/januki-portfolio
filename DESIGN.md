@@ -58,7 +58,8 @@ A 4px base, expressed as rem: 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4.5, and a fluid se
 ```
 [ logo                          Work  About  Illustration  Tech packs  Contact ]
 |  thread
-|  [ name, role, one line, View work ]     [ tall Parasomnia photograph ]
+|  [ large name, centred with the photograph ]   [ Parasomnia photograph, ≤85vh ]
+|  [ role, one line, View work ]                 a peek of “01 — Selected work”
 |
 |  WORK (outlined, behind)
 |  [ Parasomnia card, tall ]  [ Sacred Skin ]
@@ -73,7 +74,7 @@ A 4px base, expressed as rem: 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4.5, and a fluid se
 |  footer links, including Illustration Instagram
 ```
 
-The header is fixed, hides on scroll down, returns on scroll up, and stays put while it contains focus. Project cards scale the image and reveal “View project”. A fine pointer also gets a small preview that follows the cursor. It is not shown for touch or reduced motion.
+On desktop the name is a large display line, vertically centred with the photograph. The photograph stays at or under 85vh, so the name, role, positioning line and View work are in the first screen at 1280×720, 1440×900 and 1920×1080, and the selected-work heading peeks in at the bottom. The home Parasomnia card is the hands-to-the-face final, so it does not repeat the site hero. The header is fixed, hides on scroll down, returns on scroll up, and stays put while it contains focus. Project cards scale the image and reveal “View project”. A fine pointer also gets a small preview that follows the cursor. It is not shown for touch or reduced motion.
 
 A project page replaces the home sections with the process column: title and hero, then concept, a full-width research board, development, the lookbook (horizontal snap, previous/next, arrow keys), and a large next-project link. Parasomnia keeps a sustainability block and a film slot that stays hidden until a source is added.
 
@@ -81,7 +82,7 @@ A project page replaces the home sections with the process column: title and her
 
 ```
 [ Januki De Silva            Menu ]
-[ photograph, full width ]
+[ photograph, full width, about 60svh ]
 Fashion Design Undergraduate
 Januki
 De Silva
@@ -102,7 +103,7 @@ Every collection starts from a story or a feeling.
 05 — Contact headline, link list, form
 ```
 
-The menu opens under the header. The thread is hidden so it does not steal width. The lookbook is a sideways scroller with Previous look / Next look underneath, each at least 44px tall. Nothing on the page scrolls sideways except that strip.
+At 390×844 and 360×740 the photograph is capped near 60svh, so the name, role and View work are in the first screen. The menu opens under the header. The thread is hidden so it does not steal width. The lookbook is a sideways scroller with Previous look / Next look underneath, each at least 44px tall. Nothing on the page scrolls sideways except that strip.
 
 ## 4. Requirement checklist
 
@@ -123,7 +124,7 @@ The menu opens under the header. The thread is hidden so it does not steal width
 | Email, LinkedIn, Behance | Contact list, footer, and the form which opens a mailto |
 | One page per project, clean URLs | `/parasomnia/`, `/sacred-skin/`, `/cosmic-heirloom/`, `/editorial-styling/` |
 | Process sections and next project | Each project page |
-| Parasomnia hero is also the site hero; Sacred Skin hero is the fringed hat; Cosmic hero is the back view | Image slots named in those pages |
+| Parasomnia project hero is the site hero (burgundy backlight). The home card uses a different final, hands to the face. Sacred Skin hero is the fringed hat. Cosmic hero is the back view | Image slots named in those pages |
 | Research boards are full-width and open in the lightbox | Project research sections |
 | Neutral base, per-project accent | `data-project` tokens in `css/styles.css` |
 | Serif + sans, two families, `clamp`, `font-display: swap`, one preload | `css/fonts.css` and the head of each page |

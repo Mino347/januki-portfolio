@@ -395,19 +395,24 @@ figcaption,
   stroke-dashoffset: 1;
 }
 
-/* Hero */
+/* Hero
+   Mobile keeps the photograph near 60svh so the name, role and
+   View work sit in the first screen. Desktop caps it near 85vh
+   and centres a larger name beside it, leaving a peek of work. */
 .hero {
+  --hero-h: min(60svh, calc(100svh - var(--header) - 18rem));
   display: flex;
   flex-direction: column;
-  gap: var(--s-5);
-  padding-bottom: var(--s-7);
+  gap: var(--s-3);
+  padding-bottom: var(--s-2);
 }
 
 .hero-media {
   background: var(--tone, #351a0f);
-  aspect-ratio: 1365 / 2048;
   overflow: hidden;
   width: 100%;
+  height: var(--hero-h);
+  max-height: 60svh;
 }
 
 .hero-media picture,
@@ -416,6 +421,7 @@ figcaption,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 16%;
 }
 
 .hero-copy {
@@ -423,14 +429,26 @@ figcaption,
   margin-inline: auto;
 }
 
+.hero-copy .eyebrow {
+  margin-bottom: var(--s-2);
+}
+
+.hero-copy .lede {
+  margin-bottom: 0;
+}
+
+.hero-copy h1 {
+  line-height: 0.9;
+}
+
 .hero-copy h1 span {
   display: block;
 }
 
-.hero .btn { margin-top: var(--s-4); }
+.hero .btn { margin-top: var(--s-3); }
 
 .hero-credit {
-  margin: var(--s-4) 0 0;
+  margin: var(--s-3) 0 0;
   color: var(--muted);
   font-size: var(--text-sm);
   letter-spacing: 0.12em;
@@ -1061,24 +1079,41 @@ dialog.lightbox::backdrop {
   }
   .thread { display: block; }
   .hero {
+    --hero-h: min(85vh, calc(100svh - var(--header) - 9.25rem));
     display: grid;
-    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
-    align-items: end;
-    min-height: calc(100svh - var(--header));
-    gap: var(--s-6);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3.5rem);
     width: min(90rem, calc(100% - 3rem));
     margin-inline: auto;
-    padding-top: var(--s-5);
+    min-height: 0;
+    padding: 0.75rem 0 0.5rem;
   }
   .hero-media {
-    margin: 0;
-    width: auto;
-    height: 100%;
-    min-height: calc(100svh - var(--header) - 2.5rem);
-    aspect-ratio: auto;
+    width: min(100%, calc(var(--hero-h) * 1365 / 2048));
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    max-height: var(--hero-h);
+    aspect-ratio: 1365 / 2048;
+    justify-self: end;
+    align-self: center;
     order: 2;
   }
-  .hero-copy { width: auto; margin: 0; order: 1; padding-bottom: var(--s-6); }
+  .hero-copy {
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    order: 1;
+    padding-bottom: 0;
+    align-self: center;
+  }
+  .hero-copy h1 {
+    font-size: clamp(4.25rem, 1.4rem + 6.6vw, 9.25rem);
+    line-height: 0.86;
+    letter-spacing: -0.035em;
+  }
+  .work-section { padding-top: var(--s-6); }
   .work-grid {
     grid-template-columns: 1.15fr 0.85fr;
     gap: var(--s-7) var(--s-6);
