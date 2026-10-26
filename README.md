@@ -18,22 +18,30 @@ Open http://localhost:8765/
 
 ## Add a project
 
-Deus ex Machina is already in `index.html` as the fifth work card, with `data-visible="false"` and the `hidden` attribute, so it does not appear on the site. The Canva contents page spells it “Dues ex machina”; the site title to use is Deus ex Machina.
+Deus ex Machina is not on the live page. A starter card sits in `<template id="deus-ex-machina-slot">` in `index.html`, so the browser does not render it or request any files for it. The Canva contents page spells this “Dues ex machina”; the title to use is Deus ex Machina.
 
-1. Export photographs as WebP srcsets:
+1. Export photographs as WebP srcsets. The script writes 480, 960 and 1600 widths when the source is large enough, and never upscales:
 
    ```bash
    python3 scripts/make_srcset.py my-photo.jpg images/deus/cover
    ```
 
-   The script writes 480, 960 and 1600 widths when the source is large enough, and never upscales.
-
-2. In `index.html`, find `id="deus-ex-machina"`.
+2. Move the `<article>` out of `#deus-ex-machina-slot` and into `.work-grid`.
 3. Put a cover image inside the card button, using `src`, `srcset`, `sizes`, `width`, `height`, `alt`, and `loading="lazy"`.
-4. Fill the concept paragraphs and uncomment or add gallery figures inside `.gallery`. Each figure’s button needs `data-lightbox-group="deus-ex-machina"` and the image needs `data-full` pointing at the largest file.
+4. Fill the concept paragraphs, and add gallery figures. Each figure’s button needs `data-lightbox-group="deus-ex-machina"`, and the image needs `data-full` pointing at the largest file:
+
+   ```html
+   <figure>
+     <button class="shot" type="button" data-lightbox-group="deus-ex-machina" data-caption="Final collection">
+       <img src="images/deus/cover-960.webp" srcset="images/deus/cover-480.webp 480w, images/deus/cover-960.webp 960w, images/deus/cover-1600.webp 1600w" sizes="(min-width: 760px) 52vw, 92vw" width="1600" height="900" alt="" loading="lazy" decoding="async" data-full="images/deus/cover-1600.webp">
+     </button>
+     <figcaption>Final collection</figcaption>
+   </figure>
+   ```
+
 5. Set `data-visible="true"` and remove `hidden` from that `<article>`.
 
-Copy the markup of Parasomnia if you would rather add a different sixth project. Give the article a new `id`, `data-project`, detail `id`s, and a matching `data-lightbox-group`.
+Copy the markup of Parasomnia if you would rather add a different project. Give the article a new `id`, `data-project`, detail `id`s, and a matching `data-lightbox-group`.
 
 ## Swap a photograph
 

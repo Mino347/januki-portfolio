@@ -430,14 +430,8 @@
           </div>
         </article>
 
-        <!--
-          Unpublished fifth project. Not shown while data-visible="false".
-          The Canva contents page spells this "Dues ex machina"; the title to use is Deus ex Machina.
-          To publish:
-            1. Add cover and gallery WebP files under images/deus/ (see scripts/make_srcset.py).
-            2. Fill the summary, concept and gallery below.
-            3. Set data-visible="true" and remove the hidden attribute on this article.
-        -->
+      </div>
+      <template id="deus-ex-machina-slot">
         <article class="work-card" id="deus-ex-machina" data-project="deus-ex-machina" data-visible="false" hidden>
           <h3 class="sr-only">Deus ex Machina</h3>
           <button class="work-open" type="button" aria-haspopup="dialog" aria-controls="project-dialog">
@@ -453,22 +447,12 @@
             <div class="project-layout">
               <div class="project-copy">
                 <h2 id="detail-deus-ex-machina-title">Deus ex Machina</h2>
-                <!-- Concept paragraphs go here. -->
               </div>
-              <div class="gallery" data-lightbox-scope="deus-ex-machina">
-                <!--
-                <figure>
-                  <button class="shot" type="button" data-lightbox-group="deus-ex-machina" data-caption="Final collection">
-                    <img src="images/deus/cover-960.webp" srcset="images/deus/cover-480.webp 480w, images/deus/cover-960.webp 960w, images/deus/cover-1600.webp 1600w" sizes="(min-width: 760px) 52vw, 92vw" width="1600" height="900" alt="" loading="lazy" decoding="async" data-full="images/deus/cover-1600.webp">
-                  </button>
-                  <figcaption>Final collection</figcaption>
-                </figure>
-                -->
-              </div>
+              <div class="gallery"></div>
             </div>
           </div>
         </article>
-      </div>
+      </template>
     </section>
 
     <section class="section" id="illustration">
