@@ -298,6 +298,7 @@ figcaption,
   margin-bottom: var(--s-7);
   position: relative;
   z-index: 1;
+  background: var(--paper);
 }
 
 /* Header */
@@ -526,7 +527,7 @@ figcaption,
   position: absolute;
   z-index: 0;
   margin: 0;
-  left: -0.04em;
+  left: max(0.4rem, calc((100% - min(86rem, 100% - 2rem)) / 2));
   top: 0;
   font-family: var(--serif);
   font-weight: 600;
@@ -534,7 +535,7 @@ figcaption,
   line-height: 0.78;
   letter-spacing: -0.035em;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(28, 23, 20, 0.38);
+  -webkit-text-stroke: 1px rgba(28, 23, 20, 0.22);
   user-select: none;
   pointer-events: none;
 }
@@ -649,16 +650,23 @@ figcaption,
 
 .portrait {
   margin: 0;
-  background: var(--tone, #6a6668);
+  background: transparent;
 }
 
-.portrait img { display: block; width: 100%; height: auto; }
+.portrait picture,
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--tone, #6a6668);
+}
 
 .portrait figcaption,
 .frame figcaption,
 .shot-figure figcaption {
   margin-top: var(--s-2);
   color: var(--muted);
+  background: var(--paper);
 }
 
 .skill-block { margin-top: var(--s-6); }
@@ -834,6 +842,10 @@ figcaption,
   margin-top: var(--s-5);
   min-width: 0;
   max-width: 100%;
+}
+
+.lineup {
+  margin-top: var(--s-7);
 }
 
 .lookbook-track {
@@ -1112,6 +1124,8 @@ dialog.lightbox::backdrop {
     font-size: clamp(4.25rem, 1.4rem + 6.6vw, 9.25rem);
     line-height: 0.86;
     letter-spacing: -0.035em;
+    /* The J in Cormorant sits left of its box. Keep the ink inside the column. */
+    padding-left: 0.08em;
   }
   .work-section { padding-top: var(--s-6); }
   .work-grid {
@@ -1141,10 +1155,21 @@ dialog.lightbox::backdrop {
   }
 }
 
+@media (min-width: 1024px) {
+  .footer-row a,
+  .footer-meta {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
 @media (min-width: 1200px) {
   .wrap { width: min(76rem, calc(100% - 4rem)); }
   .wrap-wide { width: min(92rem, calc(100% - 4rem)); }
   .site-header { padding-inline: 1.5rem; }
+  .giant {
+    left: max(0.4rem, calc((100% - min(92rem, 100% - 4rem)) / 2));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1238,9 +1263,9 @@ dialog.lightbox::backdrop {
           <a href="/parasomnia/">
             <div class="frame" style="--tone:#3b332b">
               <picture>
-            <source type="image/avif" srcset="/images/parasomnia/hands-480.avif 480w, /images/parasomnia/hands-960.avif 960w, /images/parasomnia/hands-1365.avif 1365w" sizes="(min-width: 800px) 48vw, 100vw">
-            <source type="image/webp" srcset="/images/parasomnia/hands-480.webp 480w, /images/parasomnia/hands-960.webp 960w, /images/parasomnia/hands-1365.webp 1365w" sizes="(min-width: 800px) 48vw, 100vw">
-            <img src="/images/parasomnia/hands-960.jpg" srcset="/images/parasomnia/hands-480.jpg 480w, /images/parasomnia/hands-960.jpg 960w, /images/parasomnia/hands-1365.jpg 1365w" sizes="(min-width: 800px) 48vw, 100vw" width="1365" height="2048" alt="Parasomnia final collection. A seated model with both hands raised near the face, in a dark textured garment." loading="lazy" decoding="async">
+            <source type="image/avif" srcset="/images/parasomnia/hands-480.avif 480w, /images/parasomnia/hands-720.avif 720w, /images/parasomnia/hands-960.avif 960w, /images/parasomnia/hands-1365.avif 1365w" sizes="(min-width: 800px) 48vw, calc(100vw - 2rem)">
+            <source type="image/webp" srcset="/images/parasomnia/hands-480.webp 480w, /images/parasomnia/hands-720.webp 720w, /images/parasomnia/hands-960.webp 960w, /images/parasomnia/hands-1365.webp 1365w" sizes="(min-width: 800px) 48vw, calc(100vw - 2rem)">
+            <img src="/images/parasomnia/hands-960.jpg" srcset="/images/parasomnia/hands-480.jpg 480w, /images/parasomnia/hands-720.jpg 720w, /images/parasomnia/hands-960.jpg 960w, /images/parasomnia/hands-1365.jpg 1365w" sizes="(min-width: 800px) 48vw, calc(100vw - 2rem)" width="1365" height="2048" alt="Parasomnia final collection. A seated model with both hands raised near the face, in a dark textured garment." loading="lazy" decoding="async">
           </picture>
             </div>
             <div class="work-meta">
@@ -1255,9 +1280,9 @@ dialog.lightbox::backdrop {
           <a href="/sacred-skin/">
             <div class="frame" style="--tone:#a98e76">
               <picture>
-            <source type="image/avif" srcset="/images/sacred/hero-480.avif 480w, /images/sacred/hero-960.avif 960w, /images/sacred/hero-1365.avif 1365w" sizes="(min-width: 800px) 34vw, 100vw">
-            <source type="image/webp" srcset="/images/sacred/hero-480.webp 480w, /images/sacred/hero-960.webp 960w, /images/sacred/hero-1365.webp 1365w" sizes="(min-width: 800px) 34vw, 100vw">
-            <img src="/images/sacred/hero-960.jpg" srcset="/images/sacred/hero-480.jpg 480w, /images/sacred/hero-960.jpg 960w, /images/sacred/hero-1365.jpg 1365w" sizes="(min-width: 800px) 34vw, 100vw" width="1365" height="2048" alt="Sacred Skin. A backlit fringed hat and ivory knit, photographed on the rocks." loading="lazy" decoding="async">
+            <source type="image/avif" srcset="/images/sacred/hero-480.avif 480w, /images/sacred/hero-720.avif 720w, /images/sacred/hero-960.avif 960w, /images/sacred/hero-1365.avif 1365w" sizes="(min-width: 800px) 34vw, calc(100vw - 2rem)">
+            <source type="image/webp" srcset="/images/sacred/hero-480.webp 480w, /images/sacred/hero-720.webp 720w, /images/sacred/hero-960.webp 960w, /images/sacred/hero-1365.webp 1365w" sizes="(min-width: 800px) 34vw, calc(100vw - 2rem)">
+            <img src="/images/sacred/hero-960.jpg" srcset="/images/sacred/hero-480.jpg 480w, /images/sacred/hero-720.jpg 720w, /images/sacred/hero-960.jpg 960w, /images/sacred/hero-1365.jpg 1365w" sizes="(min-width: 800px) 34vw, calc(100vw - 2rem)" width="1365" height="2048" alt="Sacred Skin. A backlit fringed hat and ivory knit, photographed on the rocks." loading="lazy" decoding="async">
           </picture>
             </div>
             <div class="work-meta">
@@ -1274,7 +1299,7 @@ dialog.lightbox::backdrop {
               <picture>
             <source type="image/avif" srcset="/images/cosmic/braids-480.avif 480w, /images/cosmic/braids-532.avif 532w" sizes="(min-width: 800px) 34vw, 100vw">
             <source type="image/webp" srcset="/images/cosmic/braids-480.webp 480w, /images/cosmic/braids-532.webp 532w" sizes="(min-width: 800px) 34vw, 100vw">
-            <img src="/images/cosmic/braids-532.jpg" srcset="/images/cosmic/braids-480.jpg 480w, /images/cosmic/braids-532.jpg 532w" sizes="(min-width: 800px) 34vw, 100vw" width="532" height="800" alt="Cosmic Heirloom photoshoot. A model with braided hair in a black top, white trousers and an embroidered jacket." loading="lazy" decoding="async">
+            <img src="/images/cosmic/braids-532.jpg" srcset="/images/cosmic/braids-480.jpg 480w, /images/cosmic/braids-532.jpg 532w" sizes="(min-width: 800px) 34vw, 100vw" width="532" height="800" alt="Back view of a model with long braids, in a black jacket with white embroidery, a black top and white trousers." loading="lazy" decoding="async">
           </picture>
             </div>
             <div class="work-meta">
@@ -1534,7 +1559,7 @@ dialog.lightbox::backdrop {
             </ul>
             <a class="btn-ghost" href="/portfolio/Januki-De-Silva-Portfolio.pdf">Download portfolio (PDF)</a>
           </div>
-          <form id="contact-form" class="form" action="mailto:janukidsilva@gmail.com" method="post" enctype="text/plain" data-reveal>
+          <form id="contact-form" class="form" action="#" data-reveal>
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">

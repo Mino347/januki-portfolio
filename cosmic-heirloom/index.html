@@ -17,17 +17,17 @@
   <meta property="og:image" content="https://januki-desilva.github.io/images/og/cosmic-heirloom.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Cosmic Heirloom. Back view of an embroidered jacket.">
+  <meta property="og:image:alt" content="Cosmic Heirloom. Black-and-white line-up of five illustrated looks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cosmic Heirloom — Januki De Silva">
   <meta name="twitter:description" content="Cosmic Heirloom by Januki De Silva. Afrofuturism meets Mexican Otomi Tenango embroidery in urban contemporary wear, told as The Threadwalker’s Journey.">
   <meta name="twitter:image" content="https://januki-desilva.github.io/images/og/cosmic-heirloom.jpg">
-  <meta name="twitter:image:alt" content="Cosmic Heirloom. Back view of an embroidered jacket.">
+  <meta name="twitter:image:alt" content="Cosmic Heirloom. Black-and-white line-up of five illustrated looks.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/fonts/f8.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="/images/cosmic/back-480.avif" imagesrcset="/images/cosmic/back-480.avif 480w, /images/cosmic/back-800.avif 800w" imagesizes="(min-width: 800px) 54vw, 100vw" type="image/avif" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/cosmic/braids-480.avif" imagesrcset="/images/cosmic/braids-480.avif 480w, /images/cosmic/braids-532.avif 532w" imagesizes="(min-width: 800px) 42vw, 100vw" type="image/avif" fetchpriority="high">
 <!-- site-css:start -->
 <style>
 /* Self-hosted, subset, free fonts. Two families only.
@@ -298,6 +298,7 @@ figcaption,
   margin-bottom: var(--s-7);
   position: relative;
   z-index: 1;
+  background: var(--paper);
 }
 
 /* Header */
@@ -526,7 +527,7 @@ figcaption,
   position: absolute;
   z-index: 0;
   margin: 0;
-  left: -0.04em;
+  left: max(0.4rem, calc((100% - min(86rem, 100% - 2rem)) / 2));
   top: 0;
   font-family: var(--serif);
   font-weight: 600;
@@ -534,7 +535,7 @@ figcaption,
   line-height: 0.78;
   letter-spacing: -0.035em;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(28, 23, 20, 0.38);
+  -webkit-text-stroke: 1px rgba(28, 23, 20, 0.22);
   user-select: none;
   pointer-events: none;
 }
@@ -649,16 +650,23 @@ figcaption,
 
 .portrait {
   margin: 0;
-  background: var(--tone, #6a6668);
+  background: transparent;
 }
 
-.portrait img { display: block; width: 100%; height: auto; }
+.portrait picture,
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--tone, #6a6668);
+}
 
 .portrait figcaption,
 .frame figcaption,
 .shot-figure figcaption {
   margin-top: var(--s-2);
   color: var(--muted);
+  background: var(--paper);
 }
 
 .skill-block { margin-top: var(--s-6); }
@@ -834,6 +842,10 @@ figcaption,
   margin-top: var(--s-5);
   min-width: 0;
   max-width: 100%;
+}
+
+.lineup {
+  margin-top: var(--s-7);
 }
 
 .lookbook-track {
@@ -1112,6 +1124,8 @@ dialog.lightbox::backdrop {
     font-size: clamp(4.25rem, 1.4rem + 6.6vw, 9.25rem);
     line-height: 0.86;
     letter-spacing: -0.035em;
+    /* The J in Cormorant sits left of its box. Keep the ink inside the column. */
+    padding-left: 0.08em;
   }
   .work-section { padding-top: var(--s-6); }
   .work-grid {
@@ -1141,10 +1155,21 @@ dialog.lightbox::backdrop {
   }
 }
 
+@media (min-width: 1024px) {
+  .footer-row a,
+  .footer-meta {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
 @media (min-width: 1200px) {
   .wrap { width: min(76rem, calc(100% - 4rem)); }
   .wrap-wide { width: min(92rem, calc(100% - 4rem)); }
   .site-header { padding-inline: 1.5rem; }
+  .giant {
+    left: max(0.4rem, calc((100% - min(92rem, 100% - 4rem)) / 2));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1218,11 +1243,11 @@ dialog.lightbox::backdrop {
         <a href="#finals" data-nav="finals">Final collection</a>
       </nav>
         </div>
-        <figure class="frame" style="--tone:#cbc9c7">
+        <figure class="frame" style="--tone:#a7a2b2">
           <picture>
-            <source type="image/avif" srcset="/images/cosmic/back-480.avif 480w, /images/cosmic/back-800.avif 800w" sizes="(min-width: 720px) 48vw, 100vw">
-            <source type="image/webp" srcset="/images/cosmic/back-480.webp 480w, /images/cosmic/back-800.webp 800w" sizes="(min-width: 720px) 48vw, 100vw">
-            <img src="/images/cosmic/back-800.jpg" srcset="/images/cosmic/back-480.jpg 480w, /images/cosmic/back-800.jpg 800w" sizes="(min-width: 720px) 48vw, 100vw" width="800" height="545" alt="Cosmic Heirloom final collection. Back view of an embroidered jacket with dense animal and plant motifs." fetchpriority="high" decoding="async">
+            <source type="image/avif" srcset="/images/cosmic/braids-480.avif 480w, /images/cosmic/braids-532.avif 532w" sizes="(min-width: 720px) 42vw, 100vw">
+            <source type="image/webp" srcset="/images/cosmic/braids-480.webp 480w, /images/cosmic/braids-532.webp 532w" sizes="(min-width: 720px) 42vw, 100vw">
+            <img src="/images/cosmic/braids-532.jpg" srcset="/images/cosmic/braids-480.jpg 480w, /images/cosmic/braids-532.jpg 532w" sizes="(min-width: 720px) 42vw, 100vw" width="532" height="800" alt="Back view of a model with long braids, in a black jacket with white embroidery, a black top and white trousers." fetchpriority="high" decoding="async">
           </picture>
         </figure>
       </header>
@@ -1269,7 +1294,7 @@ dialog.lightbox::backdrop {
             <picture>
             <source type="image/avif" srcset="/images/cosmic/development-800.avif 800w, /images/cosmic/development-1600.avif 1600w" sizes="100vw">
             <source type="image/webp" srcset="/images/cosmic/development-800.webp 800w, /images/cosmic/development-1600.webp 1600w" sizes="100vw">
-            <img src="/images/cosmic/development-1600.jpg" srcset="/images/cosmic/development-800.jpg 800w, /images/cosmic/development-1600.jpg 1600w" sizes="100vw" width="1600" height="900" alt="Cosmic Heirloom design development board of sketches and textile ideas." loading="lazy" decoding="async">
+            <img src="/images/cosmic/development-1600.jpg" srcset="/images/cosmic/development-800.jpg 800w, /images/cosmic/development-1600.jpg 1600w" sizes="100vw" width="1600" height="900" alt="Development board with garment sketches, an embroidery close-up, a red and green palette, and textile swatches." loading="lazy" decoding="async">
           </picture>
           </button>
           <figcaption>Development board</figcaption>
@@ -1282,17 +1307,17 @@ dialog.lightbox::backdrop {
           <div class="prose">
             <p class="kicker">Final collection and photoshoot</p>
             <h2>The back of the jacket</h2>
-            <p>The hero is the back view: the embroidery reads as a complete field of animals and plants. The other frames are from the same photoshoot.</p>
+            <p>The hero is the back view of the embroidered jacket. The other photographs are from the same shoot, and the line-up is the flat drawing of the five looks.</p>
           </div>
           <div class="lookbook" role="region" aria-label="Cosmic Heirloom final collection">
       <ul class="lookbook-track" tabindex="0">
         <li>
           <figure class="shot-figure">
-          <button type="button" class="shot" style="--tone:#cbc9c7" data-lightbox-group="cosmic-finals" data-caption="Back view" data-full="/images/cosmic/back-800.webp">
+          <button type="button" class="shot" style="--tone:#a7a2b2" data-lightbox-group="cosmic-finals" data-caption="Back view" data-full="/images/cosmic/braids-532.webp">
             <picture>
-            <source type="image/avif" srcset="/images/cosmic/back-480.avif 480w, /images/cosmic/back-800.avif 800w" sizes="(min-width: 800px) 26rem, 78vw">
-            <source type="image/webp" srcset="/images/cosmic/back-480.webp 480w, /images/cosmic/back-800.webp 800w" sizes="(min-width: 800px) 26rem, 78vw">
-            <img src="/images/cosmic/back-800.jpg" srcset="/images/cosmic/back-480.jpg 480w, /images/cosmic/back-800.jpg 800w" sizes="(min-width: 800px) 26rem, 78vw" width="800" height="545" alt="Cosmic Heirloom final collection. Back view of an embroidered jacket with dense animal and plant motifs." loading="lazy" decoding="async">
+            <source type="image/avif" srcset="/images/cosmic/braids-480.avif 480w, /images/cosmic/braids-532.avif 532w" sizes="(min-width: 800px) 26rem, 78vw">
+            <source type="image/webp" srcset="/images/cosmic/braids-480.webp 480w, /images/cosmic/braids-532.webp 532w" sizes="(min-width: 800px) 26rem, 78vw">
+            <img src="/images/cosmic/braids-532.jpg" srcset="/images/cosmic/braids-480.jpg 480w, /images/cosmic/braids-532.jpg 532w" sizes="(min-width: 800px) 26rem, 78vw" width="532" height="800" alt="Back view of a model with long braids, in a black jacket with white embroidery, a black top and white trousers." loading="lazy" decoding="async">
           </picture>
           </button>
           <figcaption>Back view</figcaption>
@@ -1300,26 +1325,14 @@ dialog.lightbox::backdrop {
         </li>
         <li>
           <figure class="shot-figure">
-          <button type="button" class="shot" style="--tone:#a7a2b2" data-lightbox-group="cosmic-finals" data-caption="Braids" data-full="/images/cosmic/braids-532.webp">
-            <picture>
-            <source type="image/avif" srcset="/images/cosmic/braids-480.avif 480w, /images/cosmic/braids-532.avif 532w" sizes="(min-width: 800px) 26rem, 78vw">
-            <source type="image/webp" srcset="/images/cosmic/braids-480.webp 480w, /images/cosmic/braids-532.webp 532w" sizes="(min-width: 800px) 26rem, 78vw">
-            <img src="/images/cosmic/braids-532.jpg" srcset="/images/cosmic/braids-480.jpg 480w, /images/cosmic/braids-532.jpg 532w" sizes="(min-width: 800px) 26rem, 78vw" width="532" height="800" alt="Cosmic Heirloom photoshoot. A model with braided hair in a black top, white trousers and an embroidered jacket." loading="lazy" decoding="async">
-          </picture>
-          </button>
-          <figcaption>Braids</figcaption>
-        </figure>
-        </li>
-        <li>
-          <figure class="shot-figure">
-          <button type="button" class="shot" style="--tone:#979da9" data-lightbox-group="cosmic-finals" data-caption="Profile" data-full="/images/cosmic/profile-532.webp">
+          <button type="button" class="shot" style="--tone:#979da9" data-lightbox-group="cosmic-finals" data-caption="Front view" data-full="/images/cosmic/profile-532.webp">
             <picture>
             <source type="image/avif" srcset="/images/cosmic/profile-480.avif 480w, /images/cosmic/profile-532.avif 532w" sizes="(min-width: 800px) 26rem, 78vw">
             <source type="image/webp" srcset="/images/cosmic/profile-480.webp 480w, /images/cosmic/profile-532.webp 532w" sizes="(min-width: 800px) 26rem, 78vw">
-            <img src="/images/cosmic/profile-532.jpg" srcset="/images/cosmic/profile-480.jpg 480w, /images/cosmic/profile-532.jpg 532w" sizes="(min-width: 800px) 26rem, 78vw" width="532" height="800" alt="Cosmic Heirloom photoshoot. A model in profile wearing the embroidered jacket." loading="lazy" decoding="async">
+            <img src="/images/cosmic/profile-532.jpg" srcset="/images/cosmic/profile-480.jpg 480w, /images/cosmic/profile-532.jpg 532w" sizes="(min-width: 800px) 26rem, 78vw" width="532" height="800" alt="Front view of a model with braided hair, in a black embroidered jacket, black top and white trousers." loading="lazy" decoding="async">
           </picture>
           </button>
-          <figcaption>Profile</figcaption>
+          <figcaption>Front view</figcaption>
         </figure>
         </li>
         <li>
@@ -1328,7 +1341,7 @@ dialog.lightbox::backdrop {
             <picture>
             <source type="image/avif" srcset="/images/cosmic/standing-479.avif 479w" sizes="(min-width: 800px) 26rem, 78vw">
             <source type="image/webp" srcset="/images/cosmic/standing-479.webp 479w" sizes="(min-width: 800px) 26rem, 78vw">
-            <img src="/images/cosmic/standing-479.jpg" srcset="/images/cosmic/standing-479.jpg 479w" sizes="(min-width: 800px) 26rem, 78vw" width="479" height="720" alt="Cosmic Heirloom photoshoot. A standing look from the final collection." loading="lazy" decoding="async">
+            <img src="/images/cosmic/standing-479.jpg" srcset="/images/cosmic/standing-479.jpg 479w" sizes="(min-width: 800px) 26rem, 78vw" width="479" height="720" alt="A standing model in a long black embroidered coat and white shoes." loading="lazy" decoding="async">
           </picture>
           </button>
           <figcaption>Standing look</figcaption>
@@ -1340,7 +1353,7 @@ dialog.lightbox::backdrop {
             <picture>
             <source type="image/avif" srcset="/images/cosmic/detail-426.avif 426w" sizes="(min-width: 800px) 26rem, 78vw">
             <source type="image/webp" srcset="/images/cosmic/detail-426.webp 426w" sizes="(min-width: 800px) 26rem, 78vw">
-            <img src="/images/cosmic/detail-426.jpg" srcset="/images/cosmic/detail-426.jpg 426w" sizes="(min-width: 800px) 26rem, 78vw" width="426" height="640" alt="Cosmic Heirloom detail of the embroidered textile." loading="lazy" decoding="async">
+            <img src="/images/cosmic/detail-426.jpg" srcset="/images/cosmic/detail-426.jpg 426w" sizes="(min-width: 800px) 26rem, 78vw" width="426" height="640" alt="Close view of white embroidery on black cloth, with a bird and curling stems." loading="lazy" decoding="async">
           </picture>
           </button>
           <figcaption>Embroidery detail</figcaption>
@@ -1352,6 +1365,16 @@ dialog.lightbox::backdrop {
         <button class="look-btn" type="button" data-look-next>Next look</button>
       </div>
     </div>
+          <figure class="shot-figure lineup">
+          <button type="button" class="shot" style="--tone:#cbc9c7" data-lightbox-group="cosmic-finals" data-caption="Collection line-up" data-full="/images/cosmic/back-800.webp">
+            <picture>
+            <source type="image/avif" srcset="/images/cosmic/back-480.avif 480w, /images/cosmic/back-800.avif 800w" sizes="(min-width: 800px) 70vw, 100vw">
+            <source type="image/webp" srcset="/images/cosmic/back-480.webp 480w, /images/cosmic/back-800.webp 800w" sizes="(min-width: 800px) 70vw, 100vw">
+            <img src="/images/cosmic/back-800.jpg" srcset="/images/cosmic/back-480.jpg 480w, /images/cosmic/back-800.jpg 800w" sizes="(min-width: 800px) 70vw, 100vw" width="800" height="545" alt="Black-and-white line-up of five illustrated Cosmic Heirloom looks, with starbursts and animal motifs." loading="lazy" decoding="async">
+          </picture>
+          </button>
+          <figcaption>Collection line-up</figcaption>
+        </figure>
           <nav class="project-pager" aria-label="More projects">
         <a href="/editorial-styling/"><span>Next project</span><strong>Editorial Styling</strong></a>
       </nav>
