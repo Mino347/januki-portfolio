@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://januki-desilva.github.io/sitemap.xml

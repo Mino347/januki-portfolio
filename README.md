@@ -1,10 +1,10 @@
 # Januki De Silva — fashion portfolio
 
-A one-page portfolio for Januki De Silva, a third-year Fashion Design undergraduate. It is static HTML, CSS and a small script, meant to be served from the root of this repository on GitHub Pages:
+A portfolio for Januki De Silva, a third-year Fashion Design undergraduate. It is static HTML, CSS and a small script, served from the root of this repository on GitHub Pages:
 
 https://januki-desilva.github.io/
 
-Paths are relative, so the same files work locally and at the domain root. There is no build step.
+Asset paths start with `/`, so the site is served from the domain root. `.nojekyll` is in the root so Pages will not run Jekyll.
 
 ## View it locally
 
@@ -16,45 +16,50 @@ python3 -m http.server 8765
 
 Open http://localhost:8765/
 
-## Add a project
-
-Deus ex Machina is not on the live page. A starter card sits in `<template id="deus-ex-machina-slot">` in `index.html`, so the browser does not render it or request any files for it. The Canva contents page spells this “Dues ex machina”; the title to use is Deus ex Machina.
-
-1. Export photographs as WebP srcsets. The script writes 480, 960 and 1600 widths when the source is large enough, and never upscales:
-
-   ```bash
-   python3 scripts/make_srcset.py my-photo.jpg images/deus/cover
-   ```
-
-2. Move the `<article>` out of `#deus-ex-machina-slot` and into `.work-grid`.
-3. Put a cover image inside the card button, using `src`, `srcset`, `sizes`, `width`, `height`, `alt`, and `loading="lazy"`.
-4. Fill the concept paragraphs, and add gallery figures. Each figure’s button needs `data-lightbox-group="deus-ex-machina"`, and the image needs `data-full` pointing at the largest file:
-
-   ```html
-   <figure>
-     <button class="shot" type="button" data-lightbox-group="deus-ex-machina" data-caption="Final collection">
-       <img src="images/deus/cover-960.webp" srcset="images/deus/cover-480.webp 480w, images/deus/cover-960.webp 960w, images/deus/cover-1600.webp 1600w" sizes="(min-width: 760px) 52vw, 92vw" width="1600" height="900" alt="" loading="lazy" decoding="async" data-full="images/deus/cover-1600.webp">
-     </button>
-     <figcaption>Final collection</figcaption>
-   </figure>
-   ```
-
-5. Set `data-visible="true"` and remove `hidden` from that `<article>`.
-
-Copy the markup of Parasomnia if you would rather add a different project. Give the article a new `id`, `data-project`, detail `id`s, and a matching `data-lightbox-group`.
-
 ## Swap a photograph
 
-1. Run `scripts/make_srcset.py` with a new basename, or overwrite the existing `images/...-480.webp` set.
-2. Update that `<img>`: `src`, `srcset`, `width` and `height` (use the real pixel size so the layout does not jump), `alt`, and `data-full`.
-3. Do not upscale a small original into a fake 1600-wide file. If the photo is only 800 pixels wide, stop there and say `800w` in `srcset`.
+Optimised files live under `images/`. Do not commit camera originals. The script writes AVIF, WebP and JPEG at the widths you list, never upscales, and keeps each file inside the kilobyte cap.
 
-The hero is preloaded. If you replace it, change the `<link rel="preload">` in the document head to the same `srcset`.
+```bash
+python3 scripts/optimize_images.py photo.jpg images/parasomnia/hero --widths 480,960,1365 --max-kb 150
+```
+
+Gallery images use `--max-kb 200`. Hero images, including each project hero, use `--max-kb 150`.
+
+Then, in the page that shows the photograph:
+
+1. Point every `src` and `srcset` at the new files. Widths in `srcset` must be the real pixel widths.
+2. Set `width` and `height` to the largest file’s pixel size so the layout does not jump.
+3. Set `alt` to what is actually in the frame.
+4. Set the `--tone` colour on the figure to the dominant colour printed by the script. That colour is the placeholder before the file arrives.
+5. If the picture is a hero, change the `<link rel="preload">` in that page’s head to the same AVIF `srcset`.
+
+`data-full` on a lightbox button should be the largest `.webp`. The lightbox derives the AVIF and JPEG names from it.
+
+`janukiphoto.png` is not part of any project. Do not use it yet.
+
+## Add a project
+
+1. Copy `parasomnia/index.html` to a new folder, for example `new-project/index.html`.
+2. Give the page its own `<title>`, description, canonical URL and Open Graph image.
+3. Set `data-project` on `<body>` and, if it needs its own colours, add a matching block in `css/styles.css`.
+4. Replace the copy and the image slots. Keep the order Overview, Concept, Research, Design development, Final collection, then a “Next project” link. Leave out any section the work does not actually have.
+5. Add a card in the selected-work grid on `index.html`. One link is enough: the whole card goes to the project page.
+6. Point the previous project’s “Next project” link at the new page, and point the new page onward.
+7. Add the URL to `sitemap.xml`.
+
+Research boards are full-page collages. Keep them as one zoomable image inside a lightbox button, not sliced into tiles.
 
 ## Portfolio PDF
 
-`portfolio/Januki-De-Silva-Portfolio.pdf` is a compressed copy of the 34-page portfolio. The phone number and home address that sat on the contact strips have been covered and are not in the file’s text. Leave them out of the HTML as well.
+`portfolio/Januki-De-Silva-Portfolio.pdf` is the redacted 34-page portfolio offered for download. Leave that file in place. Do not render or upload the cover, the introduction spread, or the closing thank-you spread from an unredacted export: those spreads carry personal contact details that must not be published.
+
+The pages inline `css/fonts.css` and `css/styles.css` so the first paint does not wait on a stylesheet. After editing either file, refresh the pages:
+
+```bash
+python3 scripts/inline_css.py
+```
 
 ## Publish
 
-GitHub Pages should use the `main` branch and the `/` root. `.nojekyll` is in the root so Pages will not try to run Jekyll.
+GitHub Pages should use the `main` branch and the `/` root.
