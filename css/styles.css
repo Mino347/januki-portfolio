@@ -225,6 +225,7 @@ figcaption,
   margin-bottom: var(--s-7);
   position: relative;
   z-index: 1;
+  background: var(--paper);
 }
 
 /* Header */
@@ -453,7 +454,7 @@ figcaption,
   position: absolute;
   z-index: 0;
   margin: 0;
-  left: -0.04em;
+  left: max(0.4rem, calc((100% - min(86rem, 100% - 2rem)) / 2));
   top: 0;
   font-family: var(--serif);
   font-weight: 600;
@@ -461,7 +462,7 @@ figcaption,
   line-height: 0.78;
   letter-spacing: -0.035em;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(28, 23, 20, 0.38);
+  -webkit-text-stroke: 1px rgba(28, 23, 20, 0.22);
   user-select: none;
   pointer-events: none;
 }
@@ -576,16 +577,23 @@ figcaption,
 
 .portrait {
   margin: 0;
-  background: var(--tone, #6a6668);
+  background: transparent;
 }
 
-.portrait img { display: block; width: 100%; height: auto; }
+.portrait picture,
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--tone, #6a6668);
+}
 
 .portrait figcaption,
 .frame figcaption,
 .shot-figure figcaption {
   margin-top: var(--s-2);
   color: var(--muted);
+  background: var(--paper);
 }
 
 .skill-block { margin-top: var(--s-6); }
@@ -761,6 +769,10 @@ figcaption,
   margin-top: var(--s-5);
   min-width: 0;
   max-width: 100%;
+}
+
+.lineup {
+  margin-top: var(--s-7);
 }
 
 .lookbook-track {
@@ -1039,6 +1051,8 @@ dialog.lightbox::backdrop {
     font-size: clamp(4.25rem, 1.4rem + 6.6vw, 9.25rem);
     line-height: 0.86;
     letter-spacing: -0.035em;
+    /* The J in Cormorant sits left of its box. Keep the ink inside the column. */
+    padding-left: 0.08em;
   }
   .work-section { padding-top: var(--s-6); }
   .work-grid {
@@ -1068,10 +1082,21 @@ dialog.lightbox::backdrop {
   }
 }
 
+@media (min-width: 1024px) {
+  .footer-row a,
+  .footer-meta {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
 @media (min-width: 1200px) {
   .wrap { width: min(76rem, calc(100% - 4rem)); }
   .wrap-wide { width: min(92rem, calc(100% - 4rem)); }
   .site-header { padding-inline: 1.5rem; }
+  .giant {
+    left: max(0.4rem, calc((100% - min(92rem, 100% - 4rem)) / 2));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
