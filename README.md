@@ -2,9 +2,9 @@
 
 A one-page portfolio for Januki De Silva, a third-year Fashion Design undergraduate. It is static HTML, CSS and a small script, meant to be served from the root of this repository on GitHub Pages:
 
-https://mino347.github.io/januki-portfolio/
+https://januki-desilva.github.io/
 
-Paths are relative, so the same files work locally and under the `/januki-portfolio/` project-site base. There is no build step.
+Paths are relative, so the same files work locally and at the domain root. There is no build step.
 
 ## View it locally
 
